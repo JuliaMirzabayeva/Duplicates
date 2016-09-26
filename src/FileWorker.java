@@ -77,6 +77,7 @@ public class FileWorker {
             writer.newLine();
         }
         writer.flush();
+        writer.close();
 
     }
 }
