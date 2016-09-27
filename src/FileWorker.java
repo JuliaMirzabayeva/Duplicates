@@ -15,9 +15,9 @@ public class FileWorker {
     }
     private static boolean checkInputFile(String inputFileName)
     {
-        if(((new File(inputFileName)).exists())) inputFile = new File(inputFileName);
+        if(((new File(inputFileName)).exists()) && FilePathValidator.inValidate(inputFileName)) inputFile = new File(inputFileName);
         else {
-            System.out.println("Указан неверный путь входного файла!"); //если входного файла не существует
+            System.out.println("Указан неверный путь или формат входного файла!"); //если входного файла не существует или указан неверный формат
             return false;
         }
         return true;
@@ -28,7 +28,7 @@ public class FileWorker {
     {
         if (!((new File(outputFileName)).exists())) { // если выходного файла не существует
             try{
-                if(!FilePathValidator.validate(outputFileName)) //проверка на путь с помошью регулярного выражения
+                if(!FilePathValidator.outValidate(outputFileName)) //проверка на путь с помошью регулярного выражения
                 {
                     System.out.println("Введенная строка не является путем или указано недопустимое расширение файла.");
                     return false;
